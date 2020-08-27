@@ -1,5 +1,5 @@
 all = csvread ('assets return.csv',3,1)
-TR=[1.024,	1.02,	1.022,	1.024,	1.016,	1.018,	1.02,	1.01,	1.024,	1.02,	1.022,	1.022,	1.02,	1.022,	1.024]
+TR=[1.024,1.02,1.022,1.024,1.016,1.018,1.02,1.01,1.024,1.02,1.022,1.022,1.02,1.022,1.024]
 xx = [];rr=[];stdv=[];var=[];
 for t = 1:15
  for i = 1:60
@@ -10,7 +10,7 @@ for t = 1:15
 mu1 = exp(mean(log(monthly_R1)))'
 cov1 = cov(monthly_R1)
 
-% set range of values to use for return target R
+
 
 e = ones(40,1)
  R = TR(t);
@@ -28,11 +28,6 @@ rr = [rr mu1'*x]
 var = [var x'*cov1*x]
 stdv = [stdv sqrt(x'*cov1*x)]
 end
-figure(1);
-plot(stdv, rr);
-title('Efficient Frontier')
-xlabel('Standard deviation')
-ylabel('Return')
 
 
 
