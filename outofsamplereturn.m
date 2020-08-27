@@ -8,7 +8,7 @@ for w = 1:15
  end
  mu = exp(mean(log(R1)))'
  
- % xx is the optimal portfolio from the model
+ % xx is the optimal portfolio from the model from 2005-2019
  ret = mu'*xx(:,w)
  re = [re ret]
 end
