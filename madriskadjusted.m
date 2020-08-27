@@ -10,7 +10,7 @@ for t = 1:15
   month_mu = exp(mean(log(monthly_R1)))'
   month_mean_mu = mean(monthly_R1)'
 
-  % set range of values to use for return target R
+  % R is the lamda value we choose
   R= 2
   e = ones(40,1)
    cvx_begin;
