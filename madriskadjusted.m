@@ -1,4 +1,4 @@
-all = csvread ('assets return.csv',3,1)
+all = csvread ('assets return.csv',3,1) % read data
 xx = [];rr=[];mad=[];
 for t = 1:15
   for i = 1:60
@@ -6,7 +6,7 @@ for t = 1:15
          monthly_R1(i,j) = all((t-1)*12+i,j)
      end
   end
-  month_cov = cov(monthly_R1)
+  
   month_mu = exp(mean(log(monthly_R1)))'
   month_mean_mu = mean(monthly_R1)'
 
