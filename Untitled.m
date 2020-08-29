@@ -1,14 +1,15 @@
-all = csvread ('assets return.csv',3,1)
+all = csvread ('assets return.csv',3,1) % read data
+% choose monthly return data from 2000-2004
 for i = 1:60
     for j = 1:40
          monthly_R1(i,j) = all(i,j)
     end
 end
-mu1 = exp(mean(log(monthly_R1)))'
-cov1 = cov(monthly_R1)
+mu1 = exp(mean(log(monthly_R1)))' % Geometric mean of monthly returns of 40 assets
+cov1 = cov(monthly_R1) % Covariance matrix of 40 assets
 
-% set range of values to use for return target R
-RR = [0.97:0.002:1.05]
+% set range of values to use for target return R
+RR = [1.01:0.002:1.05]
 e = ones(40,1)
 xx = [];rr=[];stdv=[];
 
@@ -22,11 +23,12 @@ cvx_begin;
     e'*x == 1;
     x>= 0;
 cvx_end
-
+% record results
 xx = [xx x]
 rr = [rr mu1'*x]
 stdv = [stdv sqrt(x'*cov1*x)]
 end
+
 figure(1);
 plot(stdv, rr);
 title('Efficient Frontier')
