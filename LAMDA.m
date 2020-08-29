@@ -1,4 +1,4 @@
-all = csvread ('assets return.csv',3,1)
+all = csvread ('assets return.csv',3,1) % read data
 xx = [];rr=[];stdv=[];
 for t = 1:15
   for i = 1:60
@@ -6,8 +6,8 @@ for t = 1:15
          monthly_R1(i,j) = all((t-1)*12+i,j)
      end
   end
-  mu1 = exp(mean(log(monthly_R1)))'
-  cov1 = cov(monthly_R1)
+  mu1 = exp(mean(log(monthly_R1)))' % mu1 is expected return of 40 assets 
+  cov1 = cov(monthly_R1) % cov1 is the covariance matrix of 40 assets
 
   % R is the value of lamda we choose
   R = 50
