@@ -1,4 +1,4 @@
-all = csvread ('assets return.csv',3,1)
+all = csvread ('assets return.csv',3,1) % read data
 xx = [];rr=[];va=[];sp=[]
 for t = 1:15
   for i = 1:60
@@ -9,8 +9,7 @@ for t = 1:15
   mu1 = exp(mean(log(monthly_R1)))'
   cov1 = cov(monthly_R1)
 
-  % set range of values to use for return target R
-  R0 = 1.01
+  R0 = 1.01 % risk-free return
   e = ones(40,1)
   s = mu1-R0*e
 
@@ -27,7 +26,4 @@ for t = 1:15
   
   x=z/k
   xx = [xx x]
-  rr = [rr mu1'*x]
-  va = [va x'*cov1*x]
-  sp = [sp (mu1'*x-R0)/sqrt(x'*cov1*x)]
 end
